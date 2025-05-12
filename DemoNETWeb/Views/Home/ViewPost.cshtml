@@ -17,7 +17,7 @@
 
 <div style="width: 100%; text-align: center; margin-top: 100px;">
     <h1 style="font-size: 60px;">@Model.Title</h1>
-    <p style="font-size: 30px;">Date: @Model.CreatedDate</p>
+    <p style="font-size: 30px;">Date: @Model.CreatedDate.ToString("g")</p>
 
     @foreach (var contentSection in Model.ContentSections)
     {
@@ -56,18 +56,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    @if (Model.UpdateDates.Any())
+                    @if (Model.UpdateDates != null && Model.UpdateDates.Any())
                     {
-                        <ul class="list-group">
-                            @foreach (var date in Model.UpdateDates.OrderByDescending(d => d))
-                            {
-                                <li class="list-group-item">@date.ToString("g")</li>
-                            }
-                        </ul>
+                    <ul class="list-group">
+                        @foreach (var update in Model.UpdateDates.OrderByDescending(u => u.UpdateDate))
+                        {
+                            <li class="list-group-item">@update.UpdateDate.ToString("f")</li>
+                        }
+                    </ul>
                     }
                     else
                     {
-                        <p>No update history available.</p>
+                    <p>No update history available.</p>
                     }
                 </div>
                 <div class="modal-footer">
@@ -104,14 +104,6 @@
         });
 
         document.body.appendChild(modal);
-    }
-
-    function showHistoryModal() {
-        document.getElementById('historyModal').style.display = 'block';
-    }
-
-    function closeHistoryModal() {
-        document.getElementById('historyModal').style.display = 'none';
     }
 
 </script>

@@ -147,3 +147,4 @@ C:\Users\THIS PC\Desktop\Web C#\DemoNETWeb\DemoNETWeb\obj\Debug\My Personal Blog
 C:\Users\THIS PC\Desktop\Web C#\DemoNETWeb\DemoNETWeb\obj\Debug\My Perso.744B20A4.Up2Date
 C:\Users\THIS PC\Desktop\Web C#\DemoNETWeb\DemoNETWeb\obj\Debug\DemoNETWeb.dll
 C:\Users\THIS PC\Desktop\Web C#\DemoNETWeb\DemoNETWeb\obj\Debug\DemoNETWeb.pdb
+C:\Users\THIS PC\Desktop\Web C#\DemoNETWeb\DemoNETWeb\obj\Debug\DemoNETWeb.Migrations.AddPostUpdateDates.resources

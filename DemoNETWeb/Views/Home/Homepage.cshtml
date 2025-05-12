@@ -38,7 +38,9 @@
                         }
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <h2 class="card-title fs-4 mb-0">@post.Title</h2>
+                                <h2 class="card-title fs-4 mb-0">
+                                    @(post.Title.Length > 15 ? post.Title.Substring(0, 15) + "..." : post.Title)
+                                </h2>
                                 <small class="text-muted">@post.CreatedDate.ToShortDateString()</small>
                             </div>
                             <p class="card-text text-muted" style="max-height: 100px; overflow: hIdden; text-overflow: ellipsis;">

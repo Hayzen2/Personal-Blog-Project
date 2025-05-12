@@ -26,7 +26,10 @@ namespace DemoNETWeb.Controllers
         }
         public ActionResult ViewPost(int id)
         {
-            var post = _context.Posts.Include("ContentSections").FirstOrDefault(p => p.Id == id);
+            var post = _context.Posts
+            .Include(p => p.ContentSections)
+            .Include(p => p.UpdateDates) 
+            .FirstOrDefault(p => p.Id == id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -91,8 +94,7 @@ namespace DemoNETWeb.Controllers
             {
                 Title = title,
                 CreatedDate = DateTime.Now,
-                ContentSections = contentSections,
-                UpdateDates = new List<DateTime>()
+                ContentSections = contentSections
             };
 
             _context.Posts.Add(post);
@@ -120,11 +122,7 @@ namespace DemoNETWeb.Controllers
             }
 
             post.Title = title;
-            if (post.UpdateDates == null)
-            {
-                post.UpdateDates = new List<DateTime>();
-            }
-            post.UpdateDates.Add(DateTime.Now);
+            post.UpdateDates.Add(new PostUpdateDate { UpdateDate = DateTime.Now });
             deleteFiles = deleteFiles ?? new List<bool>();
             for (int i = 0; i < deleteFiles.Count; i++)
             {

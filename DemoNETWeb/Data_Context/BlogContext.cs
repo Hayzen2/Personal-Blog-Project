@@ -15,6 +15,6 @@ namespace DemoNETWeb.Data_Context
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<ContentSection> ContentSections { get; set; }
-
+        public DbSet<PostUpdateDate> PostUpdateDates { get; set; }
     }
 }

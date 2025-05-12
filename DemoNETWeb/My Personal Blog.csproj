@@ -238,6 +238,10 @@
     <Compile Include="Migrations\202505110812427_AddUpdateHistory.Designer.cs">
       <DependentUpon>202505110812427_AddUpdateHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202505120119396_AddPostUpdateDates.cs" />
+    <Compile Include="Migrations\202505120119396_AddPostUpdateDates.Designer.cs">
+      <DependentUpon>202505120119396_AddPostUpdateDates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -337,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505110812427_AddUpdateHistory.resx">
       <DependentUpon>202505110812427_AddUpdateHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505120119396_AddPostUpdateDates.resx">
+      <DependentUpon>202505120119396_AddPostUpdateDates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
