@@ -1,0 +1,34 @@
+ 
+# ASP.NET Core and MVC
+/bin/
+/obj/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+
+# NuGet Packages
+packages/
+*.nupkg
+
+# Sensitive Configuration
+Web.config
+appsettings.json
+*.config
+
+# Logs and Temp Files
+*.log
+/temp/
+/logs/
+
+# MinIO Credentials (if stored in files)
+*.key
+*.secret
+
+# Miscellaneous
+*.bak
+*.cache

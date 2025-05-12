@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "../Shared/_Layout.cshtml";
+    ViewBag.Title = "Add New Post";
+}
+
+<a href="/" class="btn btn-primary fs-4"> <i class="bi bi-house"></i>  Back to homepage</a>
+
+<h1 style="text-align: center;">Add New Post</h1>
+
+<div style="display: flex; justify-content: center;">
+    <form method="post" action="/Home/Add" enctype="multipart/form-data" style="width: 100%; max-width: 1500px; font-size: 30px;">
+        <div style="margin-bottom: 20px;">
+            <label for="title" style="display:block;font-weight:bold;">Title</label>
+            <input type="text" name="title" id="title" class="w-100 fs-3" placeholder="Input title here" required />
+        </div>
+
+
+        <div id="ContentContainer">
+            <div class="content-box">
+                <label style="display:block; font-weight:bold;">Upload File</label>
+                <input type="file" name="uploadedFiles" class="file-input d-none">
+                <button type="button" class="btn btn-secondary fs-3 addFileBtn">Upload File</button>
+
+                <div class="file-preview" style="margin-top: 10px;"></div>
+
+                <label style="display:block; font-weight:bold; margin-top: 20px;">Content</label>
+                <textarea name="content" class="w-100 fs-3" rows="5" placeholder="Input content here"></textarea>
+            </div>
+        </div>
+
+        <button type="button" id="addMoreBtn" class="btn btn-info fs-3 my-3">Add More Content Section</button>
+        <button type="submit" class="btn btn-success my-3 w-100 fs-3">Post</button>
+
+    </form>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Use event delegation to handle clicks on all "Upload File" buttons
+        document.getElementById("ContentContainer").addEventListener('click', function (event) {
+            //Checks if the clicked element (event.target) has the class addFileBtn
+            if (event.target && event.target.classList.contains('addFileBtn')) {
+                //Retrieves the file input element (file-input) located immediately before the button (previousElementSibling).
+                const fileInput = event.target.previousElementSibling;
+               fileInput.click();
+            }
+        });
+
+        // Handle file selection and preview for all file inputs
+        document.getElementById("ContentContainer").addEventListener('change', function (event) {
+            if (event.target.classList.contains('file-input')) {
+                const file = event.target.files[0];
+                const filePreview = event.target.nextElementSibling.nextElementSibling;
+                filePreview.innerHTML = ''; // Clear previous preview
+
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        filePreview.innerHTML = `<img src="${e.target.result}" style="max-width: 75%; height: auto;" />`;
+                    };
+                    reader.readAsDataURL(file);
+                }
+                else {
+                    filePreview.innerHTML = `<div class="preview-item"> <i class="bi bi-file-earmark fs-1"></i>
+                                <div class="file-info"> ${file.name}<br> <small>${file.type}</small> </div>
+                                </div>`;
+                }
+            }
+        });
+
+        document.getElementById("addMoreBtn").addEventListener('click', function () {
+            addContentBox();
+        });
+
+        function addContentBox() {
+            const container = document.getElementById("ContentContainer");
+
+            const contentBox = document.createElement("div");
+            contentBox.className = "content-box";
+            contentBox.innerHTML = `
+                <label style="display:block; font-weight:bold;">Upload File</label>
+                <input type="file" name="uploadedFiles" class="file-input d-none">
+                <button type="button" class="btn btn-secondary fs-3 addfileBtn">Choose File</button>
+                <div class="file-preview" style="margin-top: 10px;"></div>
+
+                <label style="display:block; font-weight:bold; margin-top: 20px;">Content</label>
+                <textarea name="content" class="w-100 fs-3" rows="5" placeholder="Input content here" required></textarea>
+            `;
+            container.appendChild(contentBox);
+        }
+    });
+</script>
+
