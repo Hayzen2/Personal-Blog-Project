@@ -40,7 +40,7 @@
                     <div class="mb-3">
                         @if (!string.IsNullOrEmpty(section.FileUrl))
                         {
-                            <input type="hidden" name="shouldDeleteFile[@i]" value="false"
+                            <input type="hidden" name="deleteFiles[@i]" value="false"
                                    id="deleteFlag-@i">
                             <div class="original-preview">
                                 @if (section.FileType.StartsWith("image/"))
